@@ -3,6 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
+    'language'          =>'ru_RU',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

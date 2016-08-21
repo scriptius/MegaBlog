@@ -31,7 +31,7 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['news_id', 'date', 'theme_id', 'text'], 'required'],
+            [['news_id', 'date', 'theme_id', 'text', 'title'], 'required'],
             [['news_id', 'theme_id'], 'integer'],
             [['date'], 'safe'],
             [['text'], 'string'],
@@ -47,10 +47,10 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'news_id' => 'News ID',
-            'date' => 'Date',
-            'theme_id' => 'Theme ID',
-            'text' => 'Text',
-            'title' => 'Title',
+            'date' => 'Дата публикации',
+            'theme_id' => 'Тема',
+            'text' => 'Текст',
+            'title' => 'Название',
         ];
     }
 
