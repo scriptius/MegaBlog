@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\News;
 use yii\web\Controller;
 
 /**
@@ -16,5 +17,10 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+    public function actionCreate()
+    {
+        $newArticle = new News();
+        return $this->render('create', ['newArticle' => $newArticle] );
     }
 }
