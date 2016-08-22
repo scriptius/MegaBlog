@@ -49,6 +49,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => true,
             'rules' => [
+                'admin/addnews' => 'admin/default/addnews'
             ],
         ],
     ],
