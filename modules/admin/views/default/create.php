@@ -30,6 +30,12 @@ $attrs = ArrayHelper::map(Themes::find()->all(), 'theme_id','theme_title');
                  <?= $form->field($newArticle, 'title')->textInput(['size' => 5]); ?>
                  <?= $form->field($newArticle, 'text')->textarea(['cols' => 2, 'rows' => 5]) ?>
 
+                <?= $form->field($newArticle, 'date')->widget(\yii\jui\DatePicker::classname(),
+                    [
+                        'language' => 'ru',
+                        'dateFormat' => 'yyyy-MM-dd',
+                    ]
+                ) ?>
             <?php ActiveForm::end() ?>
         </div>
     </div>
