@@ -10,18 +10,16 @@ use yii\helpers\Html;
 
 <div class="container">
     <div class="page-container"
-    <div class="row">
-        <div class="col-md-2">
-            <div class="text-justify">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="text-justify">
+
+                </div>
+                <hr>
 
             </div>
-            <hr>
-
-        </div>
-        <div class="col-md-10 ">
-
-
+            <div class="col-md-10 ">
+            </div>
         </div>
     </div>
-</div>
 </div>
