@@ -18,7 +18,7 @@ use yii\helpers\Html;
         <div class="row">
             <div class="col-md-2">
                 <div class="text-justify">
-                    Это главная панель инструментов. Сюда при необходимости можно добавить различные меню управления.
+                    Это главная панель инструментов. Сюда в случае необходимости можно добавить различные компоненты управления.
                 </div>
                 <hr>
                 <p>
@@ -31,7 +31,7 @@ use yii\helpers\Html;
                                                                                                 'style' => 'width:110%']) ?> </a>
                 </p>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10 ">
                 <?php  foreach ($news as $article): ?>
                     <div class="col-md-6 text-left">
                         <?= 'Дата публикации: '.$article->date; ?>
