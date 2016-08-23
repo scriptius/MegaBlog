@@ -49,7 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => true,
             'rules' => [
-                'admin/addnews' => 'admin/default/addnews'
+                'admin/addnews' => 'admin/default/addnews',
+                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>'
             ],
         ],
     ],
