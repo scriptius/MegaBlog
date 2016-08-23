@@ -8,16 +8,29 @@ use yii\helpers\Html;
 
 <hr>
 
+<?php
+arsort($sortByYearAndMonthForView[2016]);
+var_dump($sortByYearAndMonthForView);
+?>
+?>
+
 <div class="container">
     <div class="page-container"
         <div class="row">
             <div class="col-md-2">
-                <div class="text-justify">
-
-                </div>
-                <hr>
-
+                <?php foreach ($sortByYearAndMonthForView as $year => $item):?>
+                    <div class="h4">
+                    <?= $year; ?>
+                    </div>
+                    <?php foreach ($item as $year => $count):?>
+                        <div class="pager">
+                        <?= $year.'('. $count.')'; ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
+            <hr>
+
             <div class="col-md-10 ">
             </div>
         </div>
