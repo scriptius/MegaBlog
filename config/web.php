@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'language'          =>'ru_RU',
+    'defaultRoute' => 'users/default/index',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -52,11 +53,20 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => true,
             'rules' => [
-                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
                 [
                     'pattern' => 'users/<controller:\w+>/<action:\w+>/<year:\d{4}>/<month:\w+>',
                     'route' => 'users/default/index'
-                ]
+                ],
+                [
+                    'pattern' => 'users/<controller:\w+>/<action:\w+>/<year:\d{4}>',
+                    'route' => 'users/default/index'
+                ],
+                [
+                    'pattern' => 'users/<controller:\w+>/<action:\w+>/<category:\w+>',
+                    'route' => 'users/default/index'
+                ],
+
+//                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
             ],
         ],
     ],

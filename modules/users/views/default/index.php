@@ -14,13 +14,24 @@ use yii\helpers\Html;
             <div class="col-md-2">
                 <?php foreach ($sortByYearAndMonthForView as $year => $item):?>
                     <div class="h4">
-                        <a href="<?= $year; ?>"> <?= $year; ?></a>
+                        <a href="/users/default/index/<?= $year; ?>"> <?= $year; ?></a>
                     </div>
                     <?php foreach ($item as $month => $count):?>
                         <div class="pager">
-                        <?= $month.' ('. $count.')'; ?>
+                        <a href="/users/default/index/<?= $year.'/'.$month ?>"> <?= $month.' ('. $count.')'; ?></a>
                         </div>
                     <?php endforeach; ?>
+                <?php endforeach; ?>
+
+                <hr>
+                <div class="h4">
+                    Категории
+                </div>
+
+                <?php foreach($selectCategory as $category): ?>
+                    <div class="pager">
+                        <a href="/users/default/index/<?= $category['theme_title'] ?>"> <?= $category['theme_title'].' ('. $category['count_category'].')'; ?></a>
+                    </div>
                 <?php endforeach; ?>
             </div>
             <hr>
@@ -38,11 +49,9 @@ use yii\helpers\Html;
                     <div class="h3 text-success">
                         <?= $article->title; ?>
                     </div>
-                    <?= $article->text; ?>
+                    <?= mb_substr($article->text, 0, 255).' ...'; ?>
                     <hr>
                 <?php endforeach; ?>
-
-
             </div>
         </div>
     </div>
