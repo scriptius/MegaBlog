@@ -8,23 +8,17 @@ use yii\helpers\Html;
 
 <hr>
 
-<?php
-arsort($sortByYearAndMonthForView[2016]);
-var_dump($sortByYearAndMonthForView);
-?>
-?>
-
 <div class="container">
     <div class="page-container"
         <div class="row">
             <div class="col-md-2">
                 <?php foreach ($sortByYearAndMonthForView as $year => $item):?>
                     <div class="h4">
-                    <?= $year; ?>
+                        <a href="<?= $year; ?>"> <?= $year; ?></a>
                     </div>
-                    <?php foreach ($item as $year => $count):?>
+                    <?php foreach ($item as $month => $count):?>
                         <div class="pager">
-                        <?= $year.'('. $count.')'; ?>
+                        <?= $month.' ('. $count.')'; ?>
                         </div>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
@@ -32,6 +26,23 @@ var_dump($sortByYearAndMonthForView);
             <hr>
 
             <div class="col-md-10 ">
+                <?php foreach ($selectNews as $article): ?>
+                    <div class="col-md-6 text-left">
+                        <?= 'Дата публикации: '.$article->date; ?>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <?= 'Категория: '. $article->theme->theme_title; ?>
+                    </div>
+
+
+                    <div class="h3 text-success">
+                        <?= $article->title; ?>
+                    </div>
+                    <?= $article->text; ?>
+                    <hr>
+                <?php endforeach; ?>
+
+
             </div>
         </div>
     </div>

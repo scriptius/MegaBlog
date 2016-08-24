@@ -17,8 +17,7 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $articles = new News();
-        $news = $articles->findBySql('SELECT * FROM news ORDER BY date DESC')->all();
+        $news = (new News())->findBySql('SELECT * FROM news ORDER BY date DESC')->all();
         return $this->render('index', ['news' => $news]);
     }
 
