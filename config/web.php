@@ -54,6 +54,15 @@ $config = [
             'showScriptName' => true,
             'rules' => [
                 [
+                    'pattern' => 'admin/addnews',
+                    'route' => 'admin/default/addnews'
+                ],
+                [
+                    'pattern' => 'admin/editnews/<id:\d+>',
+                    'route' => 'admin/default/editnews'
+                ],
+
+                [
                     'pattern' => 'users/<controller:\w+>/<action:\w+>/<year:\d{4}>/<month:\w+>',
                     'route' => 'users/default/index'
                 ],
@@ -65,7 +74,11 @@ $config = [
                     'pattern' => 'users/<controller:\w+>/<action:\w+>/<category:\w+>',
                     'route' => 'users/default/index'
                 ],
-
+                [
+                    'pattern' => 'users/one/<id:\w+>',
+                    'route' => 'users/default/one'
+                ],
+//
 //                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
             ],
         ],

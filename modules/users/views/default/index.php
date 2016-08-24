@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
+use yii\widgets\ListView;
 ?>
 
 <div class="text-info text-center" xmlns="http://www.w3.org/1999/html">
@@ -50,9 +52,23 @@ use yii\helpers\Html;
                         <?= $article->title; ?>
                     </div>
                     <?= mb_substr($article->text, 0, 255).' ...'; ?>
+                    <a href="/users/one/<?= $article->news_id ?>">Читать далее</a>
                     <hr>
                 <?php endforeach; ?>
+                <?php
+//                echo LinkPager::widget([
+//                    'pagination' => $pagination,
+//                ]);
+
+                echo ListView::widget([
+                    'dataProvider' => $dataProvider,
+//                    'itemView' => '_list',
+                ]);
+
+
+                ?>
             </div>
         </div>
     </div>
 </div>
+
