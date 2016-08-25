@@ -3,6 +3,7 @@
 namespace app\modules\users\controllers;
 
 use app\modules\admin\models\News;
+use app\modules\admin\models\Themes;
 use yii\web\Controller;
 use yii\data\Pagination;
 use yii\data\ActiveDataProvider;
@@ -67,28 +68,68 @@ class DefaultController extends Controller
     public function actionIndex()
     {
 
+        /*
         $sql = $this->SQL_Request_Creator('fromGet');
-//        $query1 =(new News())->findBySql($sql);
-        $query =(new News())->findBySql('SELECT * FROM news ORDER BY date DESC ');
+        $countNews = (new News())->findBySql('SELECT * FROM news ORDER BY date DESC')->count();
+        $showPosts = 2;
+        $page = (int)$_GET['page'];
+        $steps = ceil($countNews/$showPosts);
+        $limit = ($page -1) * $showPosts;
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query ,
-            'pagination' => [
-                'pageSize' => 1,
-            ],
-        ]);
+        $i = 1;
+        do{
+            echo $i;
+            ++$i;
+        }while($i <= $steps);
 
-//        $query = \Yii::$app->db->createCommand()->query();
-//        $query =(new News())->findOne('Select * from news Where news_id = 24');
-//        $query = News::findBySql('Select * from news');
-//        var_dump($query);
-//        var_dump($query2);
-//        die();
+        echo '<br>';
 
-        $countQuery = clone $query;
-        $pagination = new Pagination(['totalCount' => $countQuery->count(),  'pageSize' => 2]);
-        $pagination->pageSizeParam = false;
-        $selectNews = $query->offset($pagination->offset)
+        echo 'SELECT * FROM news ORDER BY date DESC limit '
+            .$limit.', '.$showPosts;
+
+//        die;
+
+        if (!empty($_GET['page'])){
+            $query =(new News())->findBySql('SELECT * FROM news ORDER BY date DESC limit '
+                                            .$limit.', '.$showPosts)->all();
+        }
+        var_dump($query);
+        die;
+    */
+
+//        switch(true){
+//            case !empty($_GET['month']):
+//                $where[] = ['DATE_FORMAT(`date`, \'%M\')' => (string)$_GET['month']];
+//            case !empty($_GET['year']):
+//                $where[] = ['DATE_FORMAT(`date`, \'%Y\')' => (string)$_GET['year']];
+//            default:
+//                $where[] = 1;
+//        }
+//        $sql = (true == $statusWhere)? 'SELECT * FROM news WHERE '.$where.' ORDER BY date DESC' :
+//            'SELECT * FROM news ORDER BY date DESC';
+
+        switch(true){
+            case !empty($_GET['month']):
+                $where .= ' DATE_FORMAT(`date`, \'%M\') = \''.(string)$_GET['month'].'\' and';
+            case !empty($_GET['year']):
+                $where .= ' DATE_FORMAT(`date`, \'%Y\') = \''.(string)$_GET['year'].'\'';
+                break;
+            default:
+                $where = 1;
+        }
+
+        $query = News::find()->where($where);
+
+        if(true == !empty($_GET['category'])){
+            $query = News::find()->where('theme_id IN (SELECT theme_id
+                                            FROM themes
+                                            WHERE theme_title = \''.(string)$_GET['category'].'\')');
+
+        }
+
+        $pagination = new Pagination(['totalCount' => $query->count(),  'pageSize' => 5]);
+        $selectNews = $query->orderBy('date DESC')
+            ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 
@@ -113,7 +154,6 @@ class DefaultController extends Controller
                                        'selectNews'=> $selectNews,
                                        'selectCategory' => $selectCategory,
                                        'pagination' => $pagination,
-            'dataProvider' => $dataProvider
                                       ]);
     }
 
