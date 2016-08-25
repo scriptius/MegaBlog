@@ -6,6 +6,7 @@ use app\modules\admin\models\News;
 use yii\web\Controller;
 use yii\helpers\ArrayHelper;
 use \app\modules\admin\models\Themes;
+use yii\data\Pagination;
 /**
  * Default controller for the `admin` module
  */
@@ -17,8 +18,15 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $news = (new News())->findBySql('SELECT * FROM news ORDER BY date DESC')->all();
-        return $this->render('index', ['news' => $news]);
+        $query = News::find();
+
+        $pagination = new Pagination(['totalCount' => $query->count(),  'pageSize' => 5]);
+        $news = $query->orderBy('date DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index', ['news' => $news, 'pagination' => $pagination,]);
     }
 
     public function actionAddnews()

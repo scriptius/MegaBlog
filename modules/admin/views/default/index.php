@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 ?>
 <?php if(Yii::$app->session->hasFlash('addNews')): ?>
     <div class="alert alert-success text-center">
@@ -45,13 +46,18 @@ use yii\helpers\Html;
                     <div class="h3 text-success">
                         <?= $article->title; ?>
                     </div>
-                    <?= $article->text; ?>
+                    <?= mb_substr($article->text, 0, 255).'...'; ?>
                     <p>
-                        <a href="/index.php/admin/default/editnews/<?= $article->news_id; ?> ">Редактировать новость</a>
+                        <a href="/index.php/admin/editnews/<?= $article->news_id; ?> ">Редактировать новость
+                        </a>
                     </p>
                     <hr>
                 <?php endforeach; ?>
-
+                <?php
+                echo LinkPager::widget([
+                    'pagination' => $pagination,
+                ]);
+                ?>
             </div>
         </div>
     </div>
