@@ -22,6 +22,7 @@ class DefaultController extends Controller
      */
     protected function SQL_Request_Creator(string $mode, $param = NULL)
     {
+        $where = '';
         switch ($mode){
             case 'fromGet': /* Здесь генерируется SQL-запрос для выборки новостей в соотвествии с условиями (все|категория|год и месяц)
                                перед генерацией SQL-запроса проверяется наличие параметров из $_GET */
@@ -71,6 +72,7 @@ class DefaultController extends Controller
     {
         /* Здесь генерируется SQL-запрос для выборки новостей в соотвествии с условиями (все|категория|год и месяц)
            В данном случае не используется метод SQL_Request_Creator, т.к для пагинации требуется использование DAO */
+        $where = '';
         switch(true){
             case !empty($_GET['month']):
                 $where .= ' DATE_FORMAT(`date`, \'%M\') = \''.(string)$_GET['month'].'\' and';

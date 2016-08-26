@@ -18,7 +18,7 @@ use yii\helpers\Html;
                     'action' => '/index.php/admin/addnews'
                      ]);
             ?>
-            <?= $form->field($newArticle, 'news_id')->hiddenInput(['value'=> $value])->label(false); ?>
+            <?= $form->field($newArticle, 'news_id')->hiddenInput()->label(false); ?>
             <?= $form->field($newArticle, 'theme_id')->dropdownList(['Выберите тему новости..' => $attrs]); ?>
             <?= $form->field($newArticle, 'title')->textInput(['size' => 5]); ?>
             <?= $form->field($newArticle, 'text')->textarea(['cols' => 2, 'rows' => 5]) ?>
