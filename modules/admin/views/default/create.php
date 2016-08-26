@@ -11,7 +11,18 @@ use yii\helpers\Html;
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2">
+            <div class="text-justify">
+                Это главная панель инструментов. Сюда в случае необходимости можно добавить различные компоненты управления.
+            </div>
+            <hr>
+            <p>
+                <a href="/admin/default/index"> <?= Html::submitButton('HOME', ['class' => 'btn btn-success btn-lg',
+                                                                                'style' => 'width:110%']) ?>
+                </a>
+            </p>
+        </div>
+        <div class="col-md-10">
             <?php
                     $form = ActiveForm::begin([
                     'id' => 'news-form',

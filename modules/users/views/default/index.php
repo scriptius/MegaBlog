@@ -1,5 +1,6 @@
 <?php
 use yii\widgets\LinkPager;
+use yii\bootstrap\Html;
 ?>
 
 <div class="text-info text-center" xmlns="http://www.w3.org/1999/html">
@@ -12,6 +13,11 @@ use yii\widgets\LinkPager;
     <div class="page-container"
         <div class="row">
             <div class="col-md-2">
+                <p>
+                    <a href="/admin/default/index"> <?= Html::submitButton('Админка', ['class' => 'btn btn-success btn-lg',
+                                                                                                'style' => 'width:110%']) ?>
+                    </a>
+                </p>
 <!--                Формирование боковой панели сортировки по годам и месяцам-->
                 <?php foreach ($sortByYearAndMonthForView as $year => $item):?>
                     <div class="h4">

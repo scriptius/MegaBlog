@@ -30,6 +30,11 @@ use yii\widgets\LinkPager;
                     </a>
                 </p>
                 <p>
+                    <a href="/"> <?= Html::submitButton('USER', ['class' => 'btn btn-success btn-lg',
+                            'style' => 'width:110%']) ?>
+                    </a>
+                </p>
+                <p>
                     <a href="/admin/default/create"> <?= Html::submitButton('Создать новость', ['class' => 'btn btn-success btn-lg',
                                                                                                 'style' => 'width:110%']) ?> 
                     </a>
