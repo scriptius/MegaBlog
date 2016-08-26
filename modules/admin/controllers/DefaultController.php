@@ -14,10 +14,11 @@ class DefaultController extends Controller
 {
     /**
      * Renders the index view for the module
-     * @return string
+     * @return string view
      */
     public function actionIndex()
     {
+        // Поиск всех новостей и формирование пагинации
         $query = News::find();
 
         $pagination = new Pagination(['totalCount' => $query->count(),  'pageSize' => 5]);
@@ -50,17 +51,21 @@ class DefaultController extends Controller
     public function actionCreate()
     {
         $newArticle = new News();
-        $attrs = ArrayHelper::map(Themes::find()->all(), 'theme_id','theme_title');
+        $attrs = ArrayHelper::map(Themes::find()->all(), 'theme_id','theme_title'); // формирование данных для выпадающего списка
         return $this->render('create', ['newArticle' => $newArticle, 'attrs' => $attrs] );
     }
 
+    /**
+     * @param int $id identifier for editing
+     * @return string view
+     */
     public function actionEditnews(int $id)
     {
         $news = new News();
         $sql = 'SELECT * FROM news WHERE news_id = '. $id;
         $newArticle = $news->findBySql($sql)->one();
 
-        $attrs = ArrayHelper::map(Themes::find()->all(), 'theme_id','theme_title');
+        $attrs = ArrayHelper::map(Themes::find()->all(), 'theme_id','theme_title'); // формирование данных для выпадающего списка
         return $this->render('create', ['newArticle' => $newArticle, 'attrs' => $attrs] );
     }
 

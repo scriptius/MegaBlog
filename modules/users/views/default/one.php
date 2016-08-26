@@ -12,6 +12,7 @@ use yii\helpers\Html;
     <div class="page-container"
         <div class="row">
             <div class="col-md-2">
+<!--                Боковая панель-->
                 <div class="text-justify">
                     Это главная панель инструментов. Сюда в случае необходимости можно добавить различные компоненты управления.
                 </div>
@@ -21,10 +22,11 @@ use yii\helpers\Html;
                                                                                    'style' => 'width:110%']) ?>
                     </a>
                 </p>
-
+<!--                Конец боковой панели-->
             </div>
             <hr>
             <div class="col-md-10 ">
+<!--                Блок вывода новостей-->
                 <div class="col-md-6 text-left">
                     <?= 'Дата публикации: '.$article->date; ?>
                 </div>
@@ -36,6 +38,7 @@ use yii\helpers\Html;
                     <?= $article->title; ?>
                 </div>
                 <?= $article->text; ?>
+<!--                Окончание блока вывода новостей-->
             </div>
         </div>
     </div>

@@ -19,9 +19,7 @@ use yii\helpers\Html;
                      ]);
             ?>
             <?= $form->field($newArticle, 'news_id')->hiddenInput(['value'=> $value])->label(false); ?>
-            <?= $form->field($newArticle, 'theme_id')->dropdownList(
-                     ['Выберите тему новости..' => $attrs]);
-            ?>
+            <?= $form->field($newArticle, 'theme_id')->dropdownList(['Выберите тему новости..' => $attrs]); ?>
             <?= $form->field($newArticle, 'title')->textInput(['size' => 5]); ?>
             <?= $form->field($newArticle, 'text')->textarea(['cols' => 2, 'rows' => 5]) ?>
 
@@ -30,14 +28,13 @@ use yii\helpers\Html;
                         [
                             'language' => 'ru',
                             'dateFormat' => 'yyyy-MM-dd',
-                        ]
-                    ) ?>
+                        ])
+                ?>
             </div>
             <div class="col-md-6 text-center">
                 <?= Html::submitButton('Создать новость', ['class' => 'btn btn-success btn-lg']) ?>
             </div>
             <?php ActiveForm::end() ?>
-
         </div>
     </div>
 </div>
