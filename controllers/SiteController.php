@@ -60,6 +60,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        var_dump($_POST);
+
+//        die;
+//        if ($_POST){
+//
+//        }
         return $this->render('index');
     }
 
